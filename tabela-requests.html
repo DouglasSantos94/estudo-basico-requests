@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudo de requests</title>
+</head>
+<body>
+  <script src="createXhr.js"></script>
+  <script>
+    createXhr("GET", "https://jsonplaceholder.typicode.com/posts", mostrarTabela);
+    function mostrarTabela(json) {
+      const tbody = document.createElement("tbody");
+      json.map(post => {
+        const tr = document.createElement("tr");
+        
+        const postTitle = document.createElement("th");
+        postTitle.textContent = post.title;
+        tr.appendChild(postTitle);
+        
+        const postText = document.createElement("td");
+        postText.textContent = post.body
+        
+        tr.appendChild(postText);
+        
+        tbody.appendChild(tr);
+      })
+      return tbody;
+    }
+  </script>
+</body>
+</html>
